@@ -158,7 +158,7 @@ class Forward(commands.Cog):
     @commands.command()
     @commands.guild_only()
     @checks.guildowner()
-    async def pm(self, ctx, user: discord.Member, *, message: str):
+    async def ipm(self, ctx, user: discord.Member, *, message: str):
         """PMs a person.
 
         Separate version of [p]dm but allows for guild owners. This only works for users in the
@@ -185,7 +185,7 @@ class Forward(commands.Cog):
     @commands.command()
     @commands.guild_only()
     @checks.guildowner()
-    async def apm(self, ctx, user: discord.Member, *, message: str):
+    async def pm(self, ctx, user: discord.Member, *, message: str):
         """PMs a person anonymously.
         """
         em = discord.Embed(colour=discord.Colour.red(), description=message)
