@@ -181,3 +181,27 @@ class Forward(commands.Cog):
                 "Oops. I couldn't deliver your message to {}. They most likely have me blocked or DMs closed!"
             )
         await ctx.send("Message delivered to {}".format(user))
+
+    @commands.command()
+    @commands.guild_only()
+    @checks.guildowner()
+    async def apm(self, ctx, user: discord.Member, *, message: str):
+        """PMs a person anonymously.
+        """
+        em = discord.Embed(colour=discord.Colour.red(), description=message)
+
+        if ctx.bot.user.avatar_url:
+            em.set_author(
+                name=f"Message from TrilogyMP Staff Team",
+                icon_url=ctx.bot.user.avatar_url,
+            )
+        else:
+            em.set_author(name=f"Message from TrilogyMP Staff Team")
+
+        try:
+            await user.send(embed=em)
+        except discord.Forbidden:
+            await ctx.send(
+                "Oops. I couldn't deliver your message to {}. They most likely have me blocked or DMs closed!"
+            )
+        await ctx.send("Message delivered to {}".format(user))
